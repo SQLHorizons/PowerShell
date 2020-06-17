@@ -11,11 +11,11 @@ Gets the CIM instances of a class from a CIM server.
 ```powershell
 
 $WmiObjectParameters = @{
-    Namespace    = "root\Microsoft\SqlServer\ReportServer"
+    Namespace    = "root"
     Class        = "__Namespace"
     ComputerName = $env:COMPUTERNAME
     ErrorAction  = "Stop"
 }
-$ReportServerInstance = (Get-WmiObject @WmiObjectParameters).Name
+$response = (Get-WmiObject @WmiObjectParameters).Name
 
 ```
