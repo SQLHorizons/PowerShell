@@ -19,3 +19,17 @@ $WmiObjectParameters = @{
 Get-WmiObject @WmiObjectParameters
 
 ```
+
+## Get-CimInstance Example
+
+```powershell
+
+$CimObjectParameters = @{
+    Namespace    = "root"
+    Class        = "__Namespace"
+    ComputerName = $env:COMPUTERNAME
+    ErrorAction  = "Stop"
+}
+Get-CimInstance @CimObjectParameters
+
+```
