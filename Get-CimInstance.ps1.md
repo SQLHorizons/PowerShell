@@ -16,6 +16,6 @@ $WmiObjectParameters = @{
     ComputerName = $env:COMPUTERNAME
     ErrorAction  = "Stop"
 }
-$response = (Get-WmiObject @WmiObjectParameters).Name
+Get-WmiObject @WmiObjectParameters
 
 ```
