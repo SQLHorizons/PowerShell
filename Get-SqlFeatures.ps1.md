@@ -38,8 +38,54 @@ function Get-SqlFeatures {
 
     Try {
 
+        $setup = $(Where-Object @filter) | Sort-Object FullName | Select-Object -First 1
+
+        if ( [bool] $setup ) {
+            $process = @{
+                FilePath     = $($setup.FullName)
+                ArgumentList = @(
+                    "/Action=RunDiscovery"
+                    "/q"
+                )
+                WindowStyle  = "Hidden"
+                Wait         = $true
+            }
+        }
+        $null = Start-Process @process
+
+        $GetReport = @{
+            Recurse     = $true
+            Include     = "SqlDiscoveryReport.xml"
+            Path        = $(Split-Path (Split-Path $setup.Fullname))
+            ErrorAction = "SilentlyContinue"
+        }
+
+        $xmlfile = Get-ChildItem @GetReport | Sort-Object LastWriteTime | Select-Object -First 1
+
+        if ( [bool] $xmlfile ) { 
+
+            foreach ( $result in $($([xml](Get-Content -Path $xmlfile)).ArrayOfDiscoveryInformation.DiscoveryInformation) ) {
+                [pscustomobject]@{           
+                    ComputerName      = $env:COMPUTERNAME
+                    Product           = $result.Product
+                    Instance          = $result.Instance
+                    InstanceID        = $result.InstanceID
+                    Feature           = $result.Feature
+                    Language          = $result.Language
+                    Edition           = $result.Edition
+                    Version           = $result.Version
+                    Clustered         = $result.Clustered
+                    Configured        = $result.Configured
+                }
+            }
+
+        }
+
         ##  ALL DONE
-        Write-Verbose "done"
+        
+        ##  Write-Log -status $status -message "Script complete"
+        $runtime = [Math]::Round(((Get-Date) - $start).TotalMinutes, 2)
+        Write-Host "Script complete, total runtime: $("{0:N2}" -f $runtime) minutes."
 
         Return 0
 
