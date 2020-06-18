@@ -8,12 +8,12 @@ function Get-SqlFeatures {
     [CmdletBinding(SupportsShouldProcess, ConfirmImpact = "Low")]
     [OutputType([System.Int32])]
     param (
-        [Parameter(Mandatory = $false)]
+        [Parameter(Mandatory = $false, DontShow = $true)]
         [ValidateNotNullOrEmpty()]
         [System.DateTime]
         $start = Get-Date,
         
-        [Parameter(Mandatory = $false)]
+        [Parameter(Mandatory = $false, DontShow = $true)]
         [ValidateNotNullOrEmpty()]
         [PSCustomObject]
         $search = @{
@@ -23,7 +23,7 @@ function Get-SqlFeatures {
             ErrorAction = "SilentlyContinue"
         },
 
-        [Parameter(Mandatory = $false)]
+        [Parameter(Mandatory = $false, DontShow = $true)]
         [ValidateNotNullOrEmpty()]
         [PSCustomObject]
         $filter = @{
