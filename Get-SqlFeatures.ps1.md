@@ -40,7 +40,7 @@ $GetReport = @{
     ErrorAction = "SilentlyContinue"
 }
 
-$xmlfile = Get-ChildItem @GetReport | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+$xmlfile = Get-ChildItem @GetReport | Sort-Object LastWriteTime | Select-Object -First 1
 
 if ( [bool] $xmlfile ) {
     $xml = [xml](Get-Content -Path $xmlfile)
