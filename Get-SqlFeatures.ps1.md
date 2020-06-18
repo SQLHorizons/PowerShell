@@ -2,6 +2,8 @@
 
 ```powershell
 
+$start = Get-Date
+
 $search = @{
     Recurse     = $true
     Include     = "setup.exe"
@@ -43,8 +45,27 @@ $GetReport = @{
 $xmlfile = Get-ChildItem @GetReport | Sort-Object LastWriteTime | Select-Object -First 1
 
 if ( [bool] $xmlfile ) { 
-    Return $([xml](Get-Content -Path $xmlfile)).ArrayOfDiscoveryInformation.DiscoveryInformation
+
+    foreach ( $result in $($([xml](Get-Content -Path $xmlfile)).ArrayOfDiscoveryInformation.DiscoveryInformation) ) {
+        [pscustomobject]@{           
+            ComputerName      = $env:COMPUTERNAME
+            Product           = $result.Product
+            Instance          = $result.Instance
+            InstanceID        = $result.InstanceID
+            Feature           = $result.Feature
+            Language          = $result.Language
+            Edition           = $result.Edition
+            Version           = $result.Version
+            Clustered         = $result.Clustered
+            Configured        = $result.Configured
+        }
+    }
+
 }
+
+##  Write-Log -status $status -message "Script complete"
+$runtime = [Math]::Round(((Get-Date) - $start).TotalMinutes, 2)
+Write-Host "Script complete, total runtime: $("{0:N2}" -f $runtime) minutes."
 
 ```
 
@@ -61,7 +82,21 @@ $CimObjectParameters = @{
     ComputerName = $env:COMPUTERNAME
     ErrorAction  = "Stop"
 }
-$Products = Get-CimInstance @CimObjectParameters
+
+foreach ( $result in $(Get-CimInstance @CimObjectParameters) ) {
+    [pscustomobject]@{
+        ComputerName      = $result.PSComputerName
+        Product           = $result.Name
+        Instance          = ""
+        InstanceID        = ""
+        Feature           = $result.Feature
+        Language          = ""
+        Edition           = ""
+        Version           = $result.Version
+        Clustered         = ""
+        Configured        = ""
+    }
+}
 
 ##  Write-Log -status $status -message "Script complete"
 $runtime = [Math]::Round(((Get-Date) - $start).TotalMinutes, 2)
