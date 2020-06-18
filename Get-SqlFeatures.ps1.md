@@ -38,8 +38,6 @@ function Get-SqlFeatures {
 
     Try {
 
-        }
-
         ##  ALL DONE
         Write-Verbose "done"
 
