@@ -42,7 +42,13 @@ Get-CimInstance @CimObjectParameters
 
 ```powershell
 
-    $setup = Get-ChildItem -Recurse -Include setup.exe -Path "$env:ProgramFiles\Microsoft SQL Server" -ErrorAction SilentlyContinue |
+$Search = @{
+    Recurse     = $true
+    Include     = "setup.exe"
+    Path        = "$env:ProgramFiles\Microsoft SQL Server"
+    ErrorAction = "SilentlyContinue"
+}
+$setup = Get-ChildItem @Search |
             Where-Object { $_.FullName -match 'Setup Bootstrap\\SQL' -or $_.FullName -match 'Bootstrap\\Release\\Setup.exe' -or $_.FullName -match 'Bootstrap\\Setup.exe' } |
             Sort-Object FullName -Descending | Select-Object -First 1
             
