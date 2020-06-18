@@ -54,6 +54,7 @@ if ( [bool] $xmlfile ) {
 
 ```powershell
 
+$start = Get-Date
 $CimObjectParameters = @{
     Class        = "Win32_Product"
     Filter       = "Name like '%SQL%' and Vendor = 'Microsoft Corporation'"
@@ -61,5 +62,10 @@ $CimObjectParameters = @{
     ErrorAction  = "Stop"
 }
 $Products = Get-CimInstance @CimObjectParameters
+
+##  Write-Log -status $status -message "Script complete"
+$runtime = [Math]::Round(((Get-Date) - $start).TotalMinutes, 2)
+$response = "Script: $($MyInvocation.MyCommand.Name) complete, total runtime: $("{0:N2}" -f $runtime) minutes."
+Write-Host $response
 
 ```
