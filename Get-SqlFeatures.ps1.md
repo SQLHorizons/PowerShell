@@ -42,7 +42,8 @@ $GetReport = @{
 $xmlfile = Get-ChildItem @GetReport | Sort-Object LastWriteTime -Descending | Select-Object -First 1
 
 if ( [bool] $xmlfile ) {
-
+    $xml = [xml](Get-Content -Path $xmlfile)
+    Return $xml.ArrayOfDiscoveryInformation.DiscoveryInformation
 }
 
 ```
