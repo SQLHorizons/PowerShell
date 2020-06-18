@@ -65,7 +65,6 @@ $Products = Get-CimInstance @CimObjectParameters
 
 ##  Write-Log -status $status -message "Script complete"
 $runtime = [Math]::Round(((Get-Date) - $start).TotalMinutes, 2)
-$response = "Script complete, total runtime: $("{0:N2}" -f $runtime) minutes."
-Write-Host $response
+Write-Host "Script complete, total runtime: $("{0:N2}" -f $runtime) minutes."
 
 ```
