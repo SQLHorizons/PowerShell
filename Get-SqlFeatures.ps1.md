@@ -53,10 +53,13 @@ if ( [bool] $xmlfile ) {
 - list installed products: `$Products = Get-CimInstance -Class Win32_Product`
 
 ```powershell
-$query = @{
 
+$CimObjectParameters = @{
+    Class        = "Win32_Product"
+    Filter       = "Name like '%SQL%' and Vendor = 'Microsoft Corporation'"
+    ComputerName = $env:COMPUTERNAME
+    ErrorAction  = "Stop"
 }
-
-$Products = Get-CimInstance -Class Win32_Product -Filter "Name like '%SQL%' and Vendor = 'Microsoft Corporation'"
+$Products = Get-CimInstance @CimObjectParameters
 
 ```
