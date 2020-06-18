@@ -1,7 +1,6 @@
 ## Option 1
 
 ```powershell
-
 $start = Get-Date
 
 $search = @{
