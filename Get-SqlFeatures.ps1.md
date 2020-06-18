@@ -50,6 +50,8 @@ if ( [bool] $xmlfile ) {
 
 ## Option 2
 
+- list installed products: `$Products = Get-CimInstance -Class Win32_Product`
+
 ```powershell
 
 ```
