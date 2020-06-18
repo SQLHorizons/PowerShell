@@ -18,7 +18,7 @@ $filter = @{
     }
 }
 
-$setup = $(Where-Object @filter) | Sort-Object FullName -Descending | Select-Object -First 1
+$setup = $(Where-Object @filter) | Sort-Object FullName | Select-Object -First 1
 
 if ( [bool] $setup ) {
     $process = @{
