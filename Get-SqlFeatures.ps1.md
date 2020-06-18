@@ -1,4 +1,4 @@
-## Notes
+## Option 1
 
 ```powershell
 
@@ -45,5 +45,11 @@ $xmlfile = Get-ChildItem @GetReport | Sort-Object LastWriteTime | Select-Object 
 if ( [bool] $xmlfile ) { 
     Return $([xml](Get-Content -Path $xmlfile)).ArrayOfDiscoveryInformation.DiscoveryInformation
 }
+
+```
+
+## Option 2
+
+```powershell
 
 ```
