@@ -132,3 +132,341 @@ $runtime = [Math]::Round(((Get-Date) - $start).TotalMinutes, 2)
 Write-Host "Script complete, total runtime: $("{0:N2}" -f $runtime) minutes."
 
 ```
+
+Results:
+
+```test
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : SQL Server 2017 Shared Management Objects Extensions
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.1000.169
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : SQL Server 2017 Common Files
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.1000.169
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : SQL Server 2017 Batch Parser
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.1000.169
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : Microsoft ODBC Driver 13 for SQL Server
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.3294.2
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : SQL Server 2017 Shared Management Objects Extensions
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.1000.169
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : SQL Server 2017 DMF
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.1000.169
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : Microsoft System CLR Types for SQL Server 2019 CTP3.0
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 15.0.1600.8
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : SQL Server 2017 Shared Management Objects
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.1000.169
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : SQL Server 2017 Database Engine Shared
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.1000.169
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : SQL Server 2017 Connection Info
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.1000.169
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : SQL Server 2017 SQL Diagnostics
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.1000.169
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : Browser for SQL Server 2017
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.1000.169
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : Microsoft SQL Server 2017 Setup (English)
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.3294.2
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : SQL Server 2017 Integration Services
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.1000.169
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : SQL Server 2017 Common Files
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.1000.169
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : Microsoft SQL Server 2017 T-SQL Language Service 
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.3294.2
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : Microsoft VSS Writer for SQL Server 2017
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.1000.169
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : SQL Server 2017 Shared Management Objects
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.1000.169
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : SQL Server 2017 Database Engine Services
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.1000.169
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : SQL Server 2017 Database Engine Services
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.1000.169
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : SQL Server 2017 XEvent
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.1000.169
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : Active Directory Authentication Library for SQL Server
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.3015.40
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : SQL Server 2017 XEvent
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.1000.169
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : SQL Server 2017 Database Engine Shared
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.1000.169
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : SQL Server 2017 Integration Services
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.1000.169
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : SQL Server 2017 SQL Data Quality Common
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.1000.169
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : SQL Server 2017 Connection Info
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.1000.169
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : Microsoft SQL Server 2017 RsFx Driver
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.3294.2
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : SQL Server 2017 DMF
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 14.0.1000.169
+Clustered    : 
+Configured   : 
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : Microsoft SQL Server 2012 Native Client 
+Instance     : 
+InstanceID   : 
+Feature      : 
+Language     : 
+Edition      : 
+Version      : 11.3.6540.0
+Clustered    : 
+Configured   : 
+
+Script complete, total runtime: 3.71 minutes.
+
+```
