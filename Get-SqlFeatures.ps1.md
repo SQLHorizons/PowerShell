@@ -6,7 +6,7 @@ function Get-SqlFeatures {
     #Requires -RunAsAdministrator
 
     [CmdletBinding(SupportsShouldProcess, ConfirmImpact = "Low")]
-    [OutputType([System.Int32])]
+    [OutputType([System.Management.Automation.PSCustomObject])]
     param (
         [Parameter(Mandatory = $false, DontShow = $true)]
         [ValidateNotNullOrEmpty()]
@@ -65,7 +65,7 @@ function Get-SqlFeatures {
         if ( [bool] $xmlfile ) { 
 
             $response = foreach ( $result in $($([xml](Get-Content -Path $xmlfile)).ArrayOfDiscoveryInformation.DiscoveryInformation) ) {
-                [pscustomobject]@{           
+                [System.Management.Automation.PSCustomObject]@{           
                     ComputerName      = $env:COMPUTERNAME
                     Product           = $result.Product
                     Instance          = $result.Instance
@@ -87,7 +87,7 @@ function Get-SqlFeatures {
         $runtime = [Math]::Round(((Get-Date) - $start).TotalMinutes, 2)
         Write-Host "Script complete, total runtime: $("{0:N2}" -f $runtime) minutes."
 
-        Return 0
+        Return $response
 
     }
     Catch [System.Exception] {
