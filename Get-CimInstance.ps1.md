@@ -20,6 +20,8 @@ Get-WmiObject @WmiObjectParameters
 
 ```
 
+- list installed products: `Get-WmiObject -Class Win32_Product`
+
 ## Get-CimInstance Example
 
 ```powershell
