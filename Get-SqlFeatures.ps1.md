@@ -1,3 +1,9 @@
+## Function
+
+```powershell
+
+```
+
 ## Option 1
 
 ```powershell
@@ -162,3 +168,7 @@ Configured   :
 Script complete, total runtime: 3.71 minutes.
 
 ```
+
+## Reference
+
+- [Get-DbaSqlFeature](https://www.powershellgallery.com/packages/dbatools/0.9.332/Content/functions%5CGet-DbaSqlFeature.ps1)
