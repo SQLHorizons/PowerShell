@@ -11,7 +11,7 @@ function Get-SqlFeatures {
         [Parameter(Mandatory = $false, DontShow = $true)]
         [ValidateNotNullOrEmpty()]
         [System.DateTime]
-        $start = Get-Date,
+        $start = $(Get-Date),
         
         [Parameter(Mandatory = $false, DontShow = $true)]
         [ValidateNotNullOrEmpty()]
