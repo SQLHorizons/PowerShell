@@ -69,6 +69,36 @@ Write-Host "Script complete, total runtime: $("{0:N2}" -f $runtime) minutes."
 
 ```
 
+Results:
+
+```text
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : Microsoft SQL Server 2017
+Instance     : MSSQLSERVER
+InstanceID   : MSSQL14.MSSQLSERVER
+Feature      : Database Engine Services
+Language     : 1033
+Edition      : Developer Edition
+Version      : 14.0.3294.2
+Clustered    : No
+Configured   : Yes
+
+ComputerName : EC2AMAZ-LBRL2P3
+Product      : Microsoft SQL Server 2017
+Instance     : 
+InstanceID   : 
+Feature      : Integration Services
+Language     : 1033
+Edition      : Developer Edition
+Version      : 14.0.3294.2
+Clustered    : No
+Configured   : Yes
+
+Script complete, total runtime: 0.09 minutes.
+
+```
+
 ## Option 2
 
 - list installed products: `$Products = Get-CimInstance -Class Win32_Product`
