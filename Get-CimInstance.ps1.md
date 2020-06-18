@@ -37,3 +37,14 @@ Get-CimInstance @CimObjectParameters
 ```
 
 - list installed products: `$Products = Get-CimInstance -Class Win32_Product`
+
+## Notes
+
+```powershell
+
+    $setup = Get-ChildItem -Recurse -Include setup.exe -Path "$env:ProgramFiles\Microsoft SQL Server" -ErrorAction SilentlyContinue |
+            Where-Object { $_.FullName -match 'Setup Bootstrap\\SQL' -or $_.FullName -match 'Bootstrap\\Release\\Setup.exe' -or $_.FullName -match 'Bootstrap\\Setup.exe' } |
+            Sort-Object FullName -Descending | Select-Object -First 1
+            
+```
+
