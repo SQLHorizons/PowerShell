@@ -15,7 +15,7 @@ function Get-SqlFeatures {
         
         [Parameter(Mandatory = $false, DontShow = $true)]
         [ValidateNotNullOrEmpty()]
-        [PSCustomObject]
+        [System.Management.Automation.PSCustomObject]
         $search = @{
             Recurse     = $true
             Include     = "setup.exe"
@@ -25,7 +25,7 @@ function Get-SqlFeatures {
 
         [Parameter(Mandatory = $false, DontShow = $true)]
         [ValidateNotNullOrEmpty()]
-        [PSCustomObject]
+        [System.Management.Automation.PSCustomObject]
         $filter = @{
             InputObject  = $(Get-ChildItem @search)
             FilterScript = {
