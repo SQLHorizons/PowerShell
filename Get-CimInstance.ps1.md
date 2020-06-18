@@ -48,9 +48,13 @@ $search = @{
     Path        = "$env:ProgramFiles\Microsoft SQL Server"
     ErrorAction = "SilentlyContinue"
 }
-$setup = Get-ChildItem @search |
-            Where-Object { $_.FullName -match 'Setup Bootstrap\\SQL' -or $_.FullName -match 'Bootstrap\\Release\\Setup.exe' -or $_.FullName -match 'Bootstrap\\Setup.exe' } |
-            Sort-Object FullName -Descending | Select-Object -First 1
+$filter = {
+    InputObject  = $(Get-ChildItem @search)
+    FilterScript = { $_.FullName -match 'Setup Bootstrap\\SQL' -or
+        $_.FullName -match 'Bootstrap\\Release\\Setup.exe' -or 
+        $_.FullName -match 'Bootstrap\\Setup.exe' }
+}
+$setup = Where-Object @filter | Sort-Object FullName -Descending | Select-Object -First 1
             
 $null = Start-Process -FilePath $setup.FullName -ArgumentList "/Action=RunDiscovery /q" -Wait
 $parent = Split-Path (Split-Path $setup.Fullname)
