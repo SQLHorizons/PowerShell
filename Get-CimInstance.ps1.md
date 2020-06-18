@@ -35,3 +35,5 @@ $CimObjectParameters = @{
 Get-CimInstance @CimObjectParameters
 
 ```
+
+- list installed products: `$Products = Get-CimInstance -Class Win32_Product`
