@@ -64,7 +64,7 @@ function Get-SqlFeatures {
 
         if ( [bool] $xmlfile ) { 
 
-            foreach ( $result in $($([xml](Get-Content -Path $xmlfile)).ArrayOfDiscoveryInformation.DiscoveryInformation) ) {
+            $response = foreach ( $result in $($([xml](Get-Content -Path $xmlfile)).ArrayOfDiscoveryInformation.DiscoveryInformation) ) {
                 [pscustomobject]@{           
                     ComputerName      = $env:COMPUTERNAME
                     Product           = $result.Product
