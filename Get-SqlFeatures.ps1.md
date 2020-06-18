@@ -27,6 +27,7 @@ if ( [bool] $setup ) {
             "/Action=RunDiscovery"
             "/q"
         )
+        WindowStyle  = "Hidden"
         Wait         = $true
     }
 }
