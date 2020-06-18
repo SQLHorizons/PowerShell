@@ -32,8 +32,16 @@ if ( [bool] $setup ) {
 }
 $null = Start-Process @process
 
-$parent = Split-Path (Split-Path $setup.Fullname)
-$xmlfile = Get-ChildItem -Recurse -Include SqlDiscoveryReport.xml -Path $parent | Sort-Object LastWriteTime -Descending | Select-Object -First 1
-            
-            
+$GetReport = @{
+    Recurse     = $true
+    Include     = "SqlDiscoveryReport.xml"
+    Path        = $(Split-Path (Split-Path $setup.Fullname))
+    ErrorAction = "SilentlyContinue"
+}
+
+$xmlfile = Get-ChildItem @GetReport | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+
+if ( [bool] $xmlfile ) {
+
+}
 ```
