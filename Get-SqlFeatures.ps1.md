@@ -1,8 +1,8 @@
 ## Option 1
 
 ```powershell
-$start = Get-Date
 
+$start = Get-Date
 $search = @{
     Recurse     = $true
     Include     = "setup.exe"
