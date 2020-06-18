@@ -49,7 +49,7 @@ $search = @{
     ErrorAction = "SilentlyContinue"
 }
 
-$filter = {
+$filter = @{
     InputObject  = $(Get-ChildItem @search)
     FilterScript = { $_.FullName -match 'Setup Bootstrap\\SQL' -or
         $_.FullName -match 'Bootstrap\\Release\\Setup.exe' -or 
