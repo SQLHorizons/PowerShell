@@ -6,7 +6,7 @@ Gets the CIM instances of a class from a CIM server.
 
 - [Get-CIMInstance Vs Get-WMIObject](https://blog.ipswitch.com/get-ciminstance-vs-get-wmiobject-whats-the-difference)
 
-## Get-WmiObject Example
+## [Get-WmiObject](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-wmiobject) Example
 
 ```powershell
 
