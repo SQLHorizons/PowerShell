@@ -2,6 +2,58 @@
 
 ```powershell
 
+function Get-SqlFeatures {
+    #Requires -RunAsAdministrator
+
+    [CmdletBinding(SupportsShouldProcess, ConfirmImpact = "Low")]
+    [OutputType([System.Int32])]
+    param (
+        [Parameter(Mandatory = $false)]
+        [ValidateNotNullOrEmpty()]
+        [System.DateTime]
+        $start = Get-Date,
+        
+        [Parameter(Mandatory = $false)]
+        [ValidateNotNullOrEmpty()]
+        [PSCustomObject]
+        $search = @{
+            Recurse     = $true
+            Include     = "setup.exe"
+            Path        = "$env:ProgramFiles\Microsoft SQL Server"
+            ErrorAction = "SilentlyContinue"
+        },
+
+        [Parameter(Mandatory = $false)]
+        [ValidateNotNullOrEmpty()]
+        [PSCustomObject]
+        $filter = @{
+            InputObject  = $(Get-ChildItem @search)
+            FilterScript = {
+                $_.FullName -match "Setup Bootstrap\\SQL" -or
+                $_.FullName -match "Bootstrap\\Release\\Setup.exe" -or 
+                $_.FullName -match "Bootstrap\\Setup.exe"
+            }
+        }
+    )
+
+    Try {
+
+        }
+
+        ##  ALL DONE
+        Write-Verbose "done"
+
+        Return 0
+
+    }
+    Catch [System.Exception] {
+
+        Write-Verbose "Error at line: $(($PSItem[0].InvocationInfo.line).Trim())"
+        $PSCmdlet.ThrowTerminatingError($PSItem)
+
+    }
+}
+
 ```
 
 ## Option 1
