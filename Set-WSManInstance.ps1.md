@@ -3,4 +3,5 @@
 ## Notes
 
 - `Get-WSManInstance -ResourceURI winrm/config/service`
-- `Get-WSManCredSSP `
+- `Get-WSManCredSSP`
+- `Enable-WSManCredSSP -DelegateComputer *.domain.tld -Role Client`
