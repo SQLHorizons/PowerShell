@@ -2,4 +2,5 @@
 
 ## Notes
 
-`Get-WSManInstance -ResourceURI winrm/config/service`
+- `Get-WSManInstance -ResourceURI winrm/config/service`
+- `Get-WSManCredSSP `
