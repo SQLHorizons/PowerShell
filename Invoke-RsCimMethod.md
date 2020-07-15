@@ -2,6 +2,10 @@
 
 Notes
 
+## Reference:
+
+- [[Microsoft.Management.Infrastructure.CimMethodResult]](https://docs.microsoft.com/en-us/dotnet/api/microsoft.management.infrastructure.ciminstance)
+
 ## function
 
 ```powershell
