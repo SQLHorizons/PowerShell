@@ -4,6 +4,7 @@ Notes
 
 ## Function:
 
+```powershell
 function Get-ReportingServicesData {
     [CmdletBinding()]
     [OutputType([System.Collections.Hashtable])]
@@ -57,3 +58,4 @@ function Get-ReportingServicesData {
     .PARAMETER InstanceName
         Name of the SQL Server Reporting Services instance for which the data is being retrieved.
 #>
+```
