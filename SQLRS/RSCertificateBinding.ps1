@@ -1,4 +1,4 @@
-﻿﻿function Set-SSLCertificateBinding {
+function Set-RSCertificateBinding {
     [CmdletBinding(SupportsShouldProcess, ConfirmImpact = "Low")]
     [OutputType([System.Int32])]
     param (
@@ -10,38 +10,41 @@
         [Parameter(Mandatory = $false)]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        $endpoint = $($env:endpoint)
+        $UrlString = $($env:endpoint)
     )
 
     Try {
 
         if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
+            foreach ( $Application in @("ReportServerWebService", "ReportServerWebApp") ) {
 
-            $CertificateBindingParameters = @{
-                CimInstance = $(Get-ReportingServicesData SSRS).Configuration
-                MethodName  = "CreateSSLCertificateBinding"
-                Arguments   = @{
-                    CertificateHash = [String]$Certificate.GetCertHashString().ToLower()
-                    IPAddress       = [String]"0.0.0.0"
-                    Port            = [Int32]443
-                    Lcid            = [Int32]$(Get-Culture).LCID
+                $invokeRsCimMethodParameters = @{
+                    CimInstance = $(Get-ReportingServicesData SSRS).Configuration
+                    MethodName  = "CreateSSLCertificateBinding"
+                    Arguments   = @{
+                        Application     = [String]$Application
+                        CertificateHash = [String]$Certificate.GetCertHashString().ToLower()
+                        IPAddress       = [String]"0.0.0.0"
+                        Port            = [Int32]443
+                        Lcid            = [Int32]$(Get-Culture).LCID
+                    }
                 }
-            }
 
-            $ReserveURLParameters = @{
-                CimInstance = $(Get-ReportingServicesData SSRS).Configuration
-                MethodName  = "ReserveURL"
-                Arguments   = @{
-                    UrlString       = [String]"https://$($endpoint):443"
-                    Lcid            = [Int32]$(Get-Culture).LCID
+                Write-Verbose "Create SSL Certificate Binding on $($env:COMPUTERNAME)"
+                $null = Invoke-RsCimMethod @invokeRsCimMethodParameters
+                Write-Verbose "SSL Certificate Binding created on $($env:COMPUTERNAME)."
+
+                $Arguments = @{
+                    Application = [String]$Application
+                    UrlString   = [String]"https://$($UrlString):443"
+                    Lcid        = [Int32]$(Get-Culture).LCID
                 }
-            }
 
-            foreach ( $Application in @("ReportServerWebService","ReportServerWebApp") ) {
-                $CertificateBindingParameters.Arguments["Application"] = [String]$Application
-                $ReserveURLParameters.Arguments["Application"] = [String]$Application
-                $null = Invoke-RsCimMethod @CertificateBindingParameters
-                $null = Invoke-RsCimMethod @ReserveURLParameters
+                Write-Verbose "Reserve url $($Arguments.UrlString) on $($env:COMPUTERNAME)."
+                $invokeRsCimMethodParameters["MethodName"] = "ReserveURL"
+                $invokeRsCimMethodParameters["Arguments"] = $Arguments
+                $null = Invoke-RsCimMethod @invokeRsCimMethodParameters
+                Write-Verbose "$($Arguments.UrlString) url reserve on $($env:COMPUTERNAME)."
             }
 
             Restart-Service SQLServerReportingServices -Force
@@ -49,9 +52,9 @@
         }
 
         ##  ALL DONE
-        Write-Verbose "ALL DONE"
+        Write-Verbose "Set Reporting Services Certificate Binding completed on $($env:COMPUTERNAME)."
 
-        Return 0
+        Return $null
 
     }
     Catch [System.Exception] {
@@ -135,6 +138,7 @@ function Invoke-RsCimMethod {
 
     $invokeCimMethodResult = $CimInstance | Invoke-CimMethod @invokeCimMethodParameters
 
+    ##  handle any errors from CimMethod
     if ($invokeCimMethodResult -and $invokeCimMethodResult.HRESULT -ne 0) {
         if ($invokeCimMethodResult | Get-Member -Name "ExtendedErrors") {
             $errorMessage = $invokeCimMethodResult.ExtendedErrors -join ";"
