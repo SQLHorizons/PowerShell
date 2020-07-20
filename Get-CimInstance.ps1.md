@@ -63,5 +63,5 @@ $GetCimInstanceParameters = @{
     ClassName = "SqlServiceAdvancedProperty"
     Namespace = "root\Microsoft\SqlServer\ComputerManagement14"
 }
-Get-CimInstance @GetCimInstanceParameters | Format-Table ServiceName, PropertyName, PropertyStrValue -AutoSize
+Get-CimInstance @GetCimInstanceParameters | Format-Table ServiceName, PropertyName, PropertyStrValue
 ```
