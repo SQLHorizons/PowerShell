@@ -79,4 +79,6 @@ $GetCimClassParameters = @{
     Namespace = "root\Microsoft\SqlServer\ComputerManagement14"
 }
 Get-CimClass @GetCimClassParameters | Format-Table
+$(Get-CimClass @GetCimClassParameters).CimClassMethods
+$(Get-CimClass @GetCimClassParameters).CimClassProperties
 ```
