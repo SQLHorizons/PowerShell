@@ -45,7 +45,7 @@ $GetCimInstanceParameters = @{
     ClassName = "MSReportServer_ConfigurationSetting"
     Namespace = "root\Microsoft\SQLServer\ReportServer\RS_$InstanceName\v$sqlVersion\Admin"
 }
-$reportingServicesConfiguration = Get-CimInstance $GetCimInstanceParameters
+$reportingServicesConfiguration = Get-CimInstance @GetCimInstanceParameters
 ```
 
 
@@ -54,7 +54,7 @@ $GetCimInstanceParameters = @{
     ClassName = "SqlServiceAdvancedProperty"
     Namespace = "root\Microsoft\SqlServer\ComputerManagement14"
 }
-Get-CimInstance $GetCimInstanceParameters
+Get-CimInstance @GetCimInstanceParameters
 ```
 
 
