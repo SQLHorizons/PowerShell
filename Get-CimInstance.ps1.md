@@ -38,3 +38,12 @@ Get-CimInstance @CimObjectParameters
 
 - list installed products: `$Products = Get-CimInstance -Class Win32_Product`
 
+## Get MSReportServer ConfigurationSetting Class
+
+```powershell
+$GetCimInstanceParameters = @{
+    ClassName = "MSReportServer_ConfigurationSetting"
+    Namespace = "root\Microsoft\SQLServer\ReportServer\RS_$InstanceName\v$sqlVersion\Admin"
+}
+$reportingServicesConfiguration = Get-CimInstance $GetCimInstanceParameters
+```
