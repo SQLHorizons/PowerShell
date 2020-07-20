@@ -48,14 +48,16 @@ $GetCimInstanceParameters = @{
 $reportingServicesConfiguration = Get-CimInstance @GetCimInstanceParameters
 ```
 
+## Get SQL Service Advanced Properties
 
 ```powershell
 $GetCimInstanceParameters = @{
     ClassName = "SqlServiceAdvancedProperty"
     Namespace = "root\Microsoft\SqlServer\ComputerManagement14"
 }
-Get-CimInstance @GetCimInstanceParameters
+Get-CimInstance @GetCimInstanceParameters | Format-Table
 ```
+
 
 
 Get-WmiObject -Namespace root\Microsoft\SqlServer\ComputerManagement10 `
