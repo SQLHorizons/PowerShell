@@ -65,3 +65,8 @@ $GetCimInstanceParameters = @{
 }
 Get-CimInstance @GetCimInstanceParameters | Format-Table ServiceName, PropertyName, PropertyStrValue
 ```
+
+```powershell
+Get-CimClass -Namespace root\Microsoft\SqlServer\ComputerManagement14
+```
+
