@@ -67,9 +67,8 @@ Get-CimInstance @GetCimInstanceParameters | Format-Table ServiceName, PropertyNa
 ```
 
 ```powershell
-Get-CimClass -Namespace root\Microsoft\SqlServer\ComputerManagement14
-
-Get-CimClass -Namespace root\Microsoft\SqlServer\ComputerManagement14 | Where-Object {$_.CimClassName -like "*SQL*"}
+$CimClass = Get-CimClass -Namespace root\Microsoft\SqlServer\ComputerManagement14
+$CimClass | Where-Object {$_.CimClassName -like "*SQL*"}
 ```
 
 ## Get SQL Service
