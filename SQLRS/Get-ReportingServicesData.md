@@ -26,7 +26,12 @@ function Get-ReportingServicesData {
         else {
             $sqlVersion = [int]((Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\$instanceId\Setup" -Name "Version").Version).Split(".")[0]
         }
-
+        
+        $GetCimInstanceParameters = @{
+            ClassName = "MSReportServer_ConfigurationSetting"
+            Namespace = "root\Microsoft\SQLServer\ReportServer\RS_$InstanceName\v$sqlVersion\Admin"
+        }
+        
         $reportingServicesConfiguration = Get-CimInstance -ClassName MSReportServer_ConfigurationSetting -Namespace "root\Microsoft\SQLServer\ReportServer\RS_$InstanceName\v$sqlVersion\Admin"
         $reportingServicesConfiguration = $reportingServicesConfiguration | Where-Object -FilterScript {
             $_.InstanceName -eq $InstanceName
