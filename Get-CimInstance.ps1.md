@@ -82,3 +82,13 @@ Get-CimClass @GetCimClassParameters | Format-Table
 $(Get-CimClass @GetCimClassParameters).CimClassMethods
 $(Get-CimClass @GetCimClassParameters).CimClassProperties
 ```
+
+```powershell
+$GetCimClassParameters = @{
+    ClassName = "ServerSettings"
+    Namespace = "root\Microsoft\SqlServer\ComputerManagement14"
+}
+Get-CimClass @GetCimClassParameters | Format-Table
+$(Get-CimClass @GetCimClassParameters).CimClassMethods
+$(Get-CimClass @GetCimClassParameters).CimClassProperties
+```
