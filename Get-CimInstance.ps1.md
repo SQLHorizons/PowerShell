@@ -70,3 +70,12 @@ Get-CimInstance @GetCimInstanceParameters | Format-Table ServiceName, PropertyNa
 Get-CimClass -Namespace root\Microsoft\SqlServer\ComputerManagement14
 ```
 
+## Get SQL Service
+
+```powershell
+$GetCimClassParameters = @{
+    ClassName = "SqlService"
+    Namespace = "root\Microsoft\SqlServer\ComputerManagement14"
+}
+Get-CimClass @GetCimClassParameters | Format-Table
+```
