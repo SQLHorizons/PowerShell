@@ -58,10 +58,10 @@ $GetCimInstanceParameters = @{
 Get-CimInstance @GetCimInstanceParameters | Format-Table
 ```
 
-
-
-Get-WmiObject -Namespace root\Microsoft\SqlServer\ComputerManagement10 `
- -Class SqlServiceAdvancedProperty | 
- Where-Object {$_.PropertyName -eq 'VERSION'} | 
- Format-Table ServiceName, PropertyName, PropertyStrValue -AutoSize
-
+```powershell
+$GetCimInstanceParameters = @{
+    ClassName = "SqlServiceAdvancedProperty"
+    Namespace = "root\Microsoft\SqlServer\ComputerManagement14"
+}
+Get-CimInstance @GetCimInstanceParameters | Format-Table ServiceName, PropertyName, PropertyStrValue -AutoSize
+```
