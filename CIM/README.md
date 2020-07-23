@@ -1,6 +1,6 @@
 # Cim
 
-## NumberOfLogicalProcessors
+## NumberOfLogicalProcessors (Wmi)
 
 ```powershell
 $this = @{
@@ -18,6 +18,7 @@ $this["Files"] = (Get-WmiObject @Parameters).NumberOfLogicalProcessors;
 if ($this.Files -gt 8) {$this.Files = 8};
 $this.Files
 ```
+## NumberOfLogicalProcessors (Cim)
 
 ```powershell
 $Parameters = @{
