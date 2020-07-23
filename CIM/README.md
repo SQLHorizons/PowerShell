@@ -3,9 +3,7 @@
 ## NumberOfLogicalProcessors (Wmi)
 
 ```powershell
-$this = @{
-   ServerName = $env:COMPUTERNAME
-}
+$this = @{ ServerName = $env:COMPUTERNAME }
 
 $Parameters = @{
     ComputerName = $this.ServerName
@@ -15,7 +13,8 @@ $Parameters = @{
 Write-Host "Getting the number of files based on processor count."
 $this["Files"] = (Get-WmiObject @Parameters).NumberOfLogicalProcessors;
 if ($this.Files -gt 8) {$this.Files = 8};
-$this.Files
+
+Return $this.Files
 ```
 ## NumberOfLogicalProcessors (Cim)
 
