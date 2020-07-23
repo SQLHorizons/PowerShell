@@ -42,7 +42,9 @@ Return $this.Files
 ## (Wmi)
 
 ```powershell
-$SQLServer = 
+Find-Module SQLServer -RequiredVersion "21.0.17279" | Install-Module -AllowClobber -Force
+Import-Module SQLServer
+$SQLServer = [Microsoft.SqlServer.Management.Smo.Server]::New("localhost")
 
 ##  apply surface area configuration control 2.12
 $WmiObject = @{
