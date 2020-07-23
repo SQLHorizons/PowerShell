@@ -39,6 +39,26 @@ if ($this.Files -gt 8) {$this.Files = 8};
 Return $this.Files
 ```
 
+## (Wmi)
+
+```powershell
+$SQLServer = 
+
+##  apply surface area configuration control 2.12
+$WmiObject = @{
+    ComputerName = $SQLServer.NetName
+    Namespace    = "root\Microsoft\SqlServer\ComputerManagement$($SQLServer.VersionMajor)"
+    Class        = "ServerSettingsGeneralFlag"
+    Filter       = "FlagName = 'HideInstance'"
+}
+$HideInstance = Get-WmiObject @WmiObject
+```
+
+## (Cim)
+
+```powershell
+```
+
 ## GetServiceStartName (Wmi)
 
 ```powershell
