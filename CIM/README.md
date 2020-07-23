@@ -3,7 +3,7 @@
 ## NumberOfLogicalProcessors (Wmi)
 
 ```powershell
-$this = @{ ServerName = $env:COMPUTERNAME; Files      = 0 }
+$this = @{ ServerName = $env:COMPUTERNAME; Files = 0 }
 
 <#CODE#>
 $Parameters = @{
@@ -22,7 +22,7 @@ Return $this.Files
 ## NumberOfLogicalProcessors (Cim)
 
 ```powershell
-$this = @{ ServerName = $env:COMPUTERNAME; Files      = 0 }
+$this = @{ ServerName = $env:COMPUTERNAME; Files = 0 }
 
 <#CODE#>
 $Parameters = @{
