@@ -10,7 +10,6 @@ $this = @{
 $Parameters = @{
     ComputerName = $this.ServerName
     Class        = "Win32_ComputerSystem"
-    ErrorAction  = "Stop"
 }
 
 Write-Host "Getting the number of files based on processor count."
@@ -24,7 +23,6 @@ $this.Files
 $Parameters = @{
     ComputerName = $this.ServerName
     Class        = "Win32_ComputerSystem"
-    ErrorAction  = "Stop"
 }
 
 Write-Verbose "Getting the number of files based on processor count."
