@@ -3,47 +3,37 @@
 ## NumberOfLogicalProcessors (Wmi)
 
 ```powershell
-$this = @{ ServerName = $env:COMPUTERNAME }
+$this = @{ ServerName = $env:COMPUTERNAME; Files      = 0 }
 
 <#CODE#>
-
 $Parameters = @{
     ComputerName = $this.ServerName
     Class        = "Win32_ComputerSystem"
     ErrorAction  = "Stop"
 }
 
-Write-Host "Getting the number of files based on processor count."
-$this["Files"] = (Get-WmiObject @Parameters).NumberOfLogicalProcessors;
+Write-Verbose "Getting the number of files based on processor count."
+$this.Files = (Get-WmiObject @Parameters).NumberOfLogicalProcessors;
 if ($this.Files -gt 8) {$this.Files = 8};
-
 <#CODE#>
-
-$Parameters = @{
-    ComputerName = $this.ServerName
-    Class        = "Win32_ComputerSystem"
-    ErrorAction  = "Stop"
-}
 
 Return $this.Files
 ```
 ## NumberOfLogicalProcessors (Cim)
 
 ```powershell
-$this = @{ ServerName = $env:COMPUTERNAME }
+$this = @{ ServerName = $env:COMPUTERNAME; Files      = 0 }
 
 <#CODE#>
-
 $Parameters = @{
     ComputerName = $this.ServerName
     Class        = "Win32_ComputerSystem"
     ErrorAction  = "Stop"
 }
 
-Write-Host "Getting the number of files based on processor count."
-$this["Files"] = (Get-CimInstance @Parameters).NumberOfLogicalProcessors;
+Write-Verbose "Getting the number of files based on processor count."
+$this.Files = (Get-CimInstance @Parameters).NumberOfLogicalProcessors;
 if ($this.Files -gt 8) {$this.Files = 8};
-
 <#CODE#>
 
 Return $this.Files
