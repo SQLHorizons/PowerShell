@@ -38,3 +38,15 @@ if ($this.Files -gt 8) {$this.Files = 8};
 
 Return $this.Files
 ```
+
+## GetServiceStartName (Wmi)
+
+```powershell
+$((Get-WmiObject win32_service -Filter "Name = 'SQLSERVERAGENT'").StartName)
+```
+
+## GetServiceStartName (Cim)
+
+```powershell
+$((Get-CimInstance win32_service -Filter "Name = 'SQLSERVERAGENT'").StartName)
+```
