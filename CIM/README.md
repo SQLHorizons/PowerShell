@@ -39,7 +39,7 @@ if ($this.Files -gt 8) {$this.Files = 8};
 Return $this.Files
 ```
 
-## (Wmi)
+## HideInstance (Wmi)
 
 ```powershell
 Find-Module SQLServer -RequiredVersion "21.0.17279" | Install-Module -AllowClobber -Force
@@ -56,9 +56,21 @@ $WmiObject = @{
 $HideInstance = Get-WmiObject @WmiObject
 ```
 
-## (Cim)
+## HideInstance (Cim)
 
 ```powershell
+Find-Module SQLServer -RequiredVersion "21.0.17279" | Install-Module -AllowClobber -Force
+Import-Module SQLServer
+$SQLServer = [Microsoft.SqlServer.Management.Smo.Server]::New("localhost")
+
+##  apply surface area configuration control 2.12
+$WmiObject = @{
+    ComputerName = $SQLServer.NetName
+    Namespace    = "root\Microsoft\SqlServer\ComputerManagement$($SQLServer.VersionMajor)"
+    Class        = "ServerSettingsGeneralFlag"
+    Filter       = "FlagName = 'HideInstance'"
+}
+$HideInstance = Get-CimInstance @WmiObject
 ```
 
 ## GetServiceStartName (Wmi)
